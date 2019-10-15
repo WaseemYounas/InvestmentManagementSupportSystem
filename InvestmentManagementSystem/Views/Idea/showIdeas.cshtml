@@ -1,0 +1,107 @@
+﻿@model List<InvestmentManagementSystem.Models.Idea>
+@{
+    ViewBag.Title = "showIdeas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="m-portlet m-portlet--full-height ">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Get ideas and contact to incubator/company
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            @*<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget5_tab1_content" role="tab">
+                                        Last Month
+                                    </a>
+                                </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget5_tab2_content" role="tab">
+                                        last Year
+                                    </a>
+                                </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget5_tab3_content" role="tab">
+                                        All time
+                                    </a>
+                                </li>
+                            </ul>*@
+                        </div>
+                    </div>
+                    <div class="m-portlet__body">
+                        <!--begin::Content--> <!--begin::m-widget5-->
+                        <div class="m-widget5">
+                            @if (Model.Count > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div class="m-widget5__item">
+                                        <div class="m-widget5__pic">
+                                            <img class="m-widget7__img" src="@Url.Content(item.User.path)" alt="">
+                                        </div>
+                                        <div class="m-widget5__content">
+                                            <h4 class="m-widget5__title">
+                                                @item.title
+                                            </h4>
+                                            <span class="m-widget5__desc">
+                                                @item.description
+                                            </span>
+                                            <div class="m-widget5__info">
+                                                <span class="m-widget5__author">
+                                                    Author:
+                                                </span>
+                                                <span class="m-widget5__info-label">
+                                                    
+                                                </span>
+                                                <span class="m-widget5__info-date m--font-info">
+                                                    @item.User.name
+                                                </span>
+                                                <span class="m-widget5__info-label">
+                                                    Released:
+                                                </span>
+                                                <span class="m-widget5__info-date m--font-info">
+                                                    @item.createdAt
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="m-widget5__stats1">
+                                            @*<span class="m-widget5__number">
+                                                19,200
+                                            </span>
+                                            <br>
+                                            <span class="m-widget5__sales">
+                                                sales
+                                            </span>*@
+                                        </div>
+                                        <div class="m-widget5__stats2">
+                                            <span class="m-widget5__number">
+                                                <a href="@Url.Action("checkDetails","Idea",new { ideaId=item.ideaId})" class="m-widget__detalis  btn m-btn--pill  btn-accent">Check details</a>
+                                            </span>
+                                            <br>
+                                            <span class="m-widget5__votes">
+                                                <a href="#"><i class="fa fa-heart"></i></a> | <a href="#"><i class="fa fa-thumbs-up"></i></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                                <!--end::m-widget5-->
+                        <!--end::Content-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

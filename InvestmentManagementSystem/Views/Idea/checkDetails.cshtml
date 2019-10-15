@@ -1,0 +1,262 @@
+﻿@model InvestmentManagementSystem.Models.Idea
+@using InvestmentManagementSystem.BL;
+@using InvestmentManagementSystem.Models;
+@{
+    ViewBag.Title = "checkDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    User incubator = new UserBL().getUserById(Model.incubatorId);
+}
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title ">
+                    
+                </h3>
+            </div>
+            <div>
+                <span class="m-subheader__daterange">
+                    @*<a href="@Url.Action("showIdeas","Idea")" class="m-widget__detalis  btn m-btn--pill  btn-accent">Go back to ideas list</a>*@
+                    <a href="@Url.Action("showIdeas","Idea")" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+                        <i class="la la-angle-left"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="row">
+            <div class="col-xl-6">
+                <!--begin:: Widgets/Finance Summary-->
+                <div class="m-portlet m-portlet--full-height ">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Idea Summary
+                                </h3>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="m-portlet__body">
+                        <div class="m-widget12">
+                            <div class="m-widget12__item">
+                                <span class="m-widget12__text1">
+                                    Entrepreneur Name
+                                    <br>
+                                    <span>
+                                        @Model.User.name
+                                    </span>
+                                </span>
+                                <span class="m-widget12__text2">
+                                    Country
+                                    <br>
+                                    <span>
+                                        @Model.User.country
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="m-widget12__item">
+                                <span class="m-widget12__text1">
+                                    Investment Amount
+                                    <br>
+                                    <span>
+                                        @Model.amount
+                                    </span>
+                                </span>
+                                <span class="m-widget12__text2">
+                                    Created At
+                                    <br>
+                                    <span>
+                                        @Model.createdAt
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="m-widget12__item">
+                                <span>
+                                    @Model.title
+                                    <br>
+                                    <span class="m-widget12__text1">
+                                        @Model.description
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end:: Widgets/Finance Summary-->
+            </div>
+            <div class="col-xl-6">
+                <!--begin:: Widgets/Company Summary-->
+                <div class="m-portlet m-portlet--full-height ">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Company Summary
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-portlet__body">
+                        <div class="m-widget13">
+                            <div class="m-widget13__item">
+                                <span class="m-widget13__desc m--align-right">
+                                    Incubator/Company Name
+                                </span>
+                                <span class="m-widget13__text m-widget13__text-bolder">
+                                    @incubator.name
+                                </span>
+                            </div>
+                            <div class="m-widget13__item">
+                                <span class="m-widget13__desc m--align-right">
+                                    Address:
+                                </span>
+                                <span class="m-widget13__text m-widget13__text-bolder">
+                                    @incubator.address, @incubator.city
+                                </span>
+                            </div>
+                            <div class="m-widget13__item">
+                                <span class="m-widget13__desc m--align-right">
+                                    Country:
+                                </span>
+                                <span class="m-widget13__text">
+                                    @incubator.country
+                                </span>
+                            </div>
+                            <div class="m-widget13__item">
+                                <span class="m-widget13__desc m--align-right">
+                                    Gender:
+                                </span>
+                                <span class="m-widget13__text m-widget13__text-bolder">
+                                    @incubator.gender
+                                </span>
+                            </div>
+                            <div class="m-widget13__item">
+                                <span class="m-widget13__desc m--align-right">
+                                    Emal:
+                                </span>
+                                <span class="m-widget13__text">
+                                    @incubator.email
+                                </span>
+                            </div>
+                            <div class="m-widget13__item">
+                                <span class="m-widget13__desc m--align-right">
+                                    Phone:
+                                </span>
+                                <span class="m-widget13__text m-widget13__number-bolder m--font-brand">
+                                    @incubator.phone
+                                </span>
+                            </div>
+                            <div class="m-widget13__action m--align-right">
+                                <button type="button" class="m-widget__detalis  btn m-btn--pill  btn-accent">
+                                    Send Request
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end:: Widgets/Company Summary-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="m-portlet m-portlet--full-height ">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Recently added ideas
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            @*<ul class="nav nav-pills nav-pills--brand m-nav-pills--align-right m-nav-pills--btn-pill m-nav-pills--btn-sm" role="tablist">
+                                    <li class="nav-item m-tabs__item">
+                                        <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_widget5_tab1_content" role="tab">
+                                            Last Month
+                                        </a>
+                                    </li>
+                                    <li class="nav-item m-tabs__item">
+                                        <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget5_tab2_content" role="tab">
+                                            last Year
+                                        </a>
+                                    </li>
+                                    <li class="nav-item m-tabs__item">
+                                        <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_widget5_tab3_content" role="tab">
+                                            All time
+                                        </a>
+                                    </li>
+                                </ul>*@
+                        </div>
+                    </div>
+                    <div class="m-portlet__body">
+                        <!--begin::Content--> <!--begin::m-widget5-->
+                        <div class="m-widget5">
+                            @if (ViewBag.ideaList != null)
+                            {
+                                foreach (var item in ViewBag.ideaList)
+                                {
+                                    <div class="m-widget5__item">
+                                        <div class="m-widget5__pic">
+                                            <img class="m-widget7__img" src="@Url.Content(item.User.path)" alt="">
+                                        </div>
+                                        <div class="m-widget5__content">
+                                            <h4 class="m-widget5__title">
+                                                @item.title
+                                            </h4>
+                                            <span class="m-widget5__desc">
+                                                @item.description
+                                            </span>
+                                            <div class="m-widget5__info">
+                                                <span class="m-widget5__author">
+                                                    Author:
+                                                </span>
+                                                <span class="m-widget5__info-label">
+
+                                                </span>
+                                                <span class="m-widget5__info-date m--font-info">
+                                                    @item.User.name
+                                                </span>
+                                                <span class="m-widget5__info-label">
+                                                    Released:
+                                                </span>
+                                                <span class="m-widget5__info-date m--font-info">
+                                                    @item.createdAt
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="m-widget5__stats1">
+                                            @*<span class="m-widget5__number">
+                                                    19,200
+                                                </span>
+                                                <br>
+                                                <span class="m-widget5__sales">
+                                                    sales
+                                                </span>*@
+                                        </div>
+                                        <div class="m-widget5__stats2">
+                                            <span class="m-widget5__number">
+                                                <a href="@Url.Action("checkDetails","Idea",new { ideaId=item.ideaId})" class="m-widget__detalis  btn m-btn--pill  btn-accent">Check details</a>
+                                            </span>
+                                            <br>
+                                            <span class="m-widget5__votes">
+                                                <a href="#"><i class="fa fa-heart"></i></a> | <a href="#"><i class="fa fa-thumbs-up"></i></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                        <!--end::m-widget5-->
+                        <!--end::Content-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

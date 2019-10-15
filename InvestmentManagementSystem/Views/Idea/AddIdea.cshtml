@@ -1,0 +1,98 @@
+﻿@model List<InvestmentManagementSystem.Models.User>
+@{
+    ViewBag.Title = "AddIdea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <!--begin::Portlet-->
+                <div class="m-portlet m-portlet--tab">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <span class="m-portlet__head-icon m--hide">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="m-portlet__head-text">
+                                    Create New Idea
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--begin::Form-->
+                    <form class="m-form m-form--fit m-form--label-align-right" id="myForm" action="@Url.Action("postIdea","Idea")" method="post">
+                        <div class="m-portlet__body">
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Title
+                                </label>
+                                <input type="text" name="title" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter idea's title" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputPassword1">
+                                    Approximate Investment Needed
+                                </label>
+                                <input type="number" name="amount" min="1" step="1" class="form-control m-input m-input--square" id="exampleInputPassword1" placeholder="Investment amount">
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleSelect1">
+                                    Select Incubator
+                                </label>
+                                <select class="form-control m-input m-input--square" name="incubatorId" id="exampleSelect1">
+                                    <option value="" disabled selected>Select incubator/company</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.userId">@item.name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleTextarea">
+                                    Description
+                                </label>
+                                <textarea class="form-control m-input" name="description" id="exampleTextarea" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
+                                <button type="submit" class="btn btn-metal">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Portlet-->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $('#myForm').validate({ // initialize the plugin
+            rules: {
+                title: {
+                    required: !0
+                },
+                amount: {
+                    required: !0,
+                },
+                description: {
+                    required: !0,
+                },
+                incubatorId:{
+                    required: !0,
+                }
+            }
+        });
+
+    });
+</script>

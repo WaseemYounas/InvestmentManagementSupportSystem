@@ -1,0 +1,331 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- begin::Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>
+        IMSS | Investment Management Support System
+    </title>
+    <meta name="description" content="Latest updates and statistic charts">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Web font -->
+    <script src="https://cdn.bootcss.com/webfont/1.6.16/webfontloader.js"></script>
+    <script>
+        WebFont.load({
+            google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!--end::Web font -->
+    <!--begin::Base Styles -->
+    <link href="~/Content/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Base Styles -->
+    <link rel="shortcut icon" href="~/Content/assets/demo/default/media/img/logo/favicon.ico" />
+</head>
+<!-- end::Head -->
+<!-- end::Body -->
+<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+    <!-- begin:: Page -->
+    <div class="m-grid m-grid--hor m-grid--root m-page">
+        <div class="m-login m-login--singin  m-login--5" id="m_login" style="background-image: url(../assets/app/media/img//bg/bg-3.jpg);">
+            <div class="m-login__wrapper-1 m-portlet-full-hei`ght">
+                <div class="m-login__wrapper-1-1">
+                    <div class="m-login__contanier">
+                        <div class="m-login__content">
+                            <div class="m-login__logo">
+                                <a href="#">
+                                    <img src="~/Content/assets/app/media/img//logos/logo.png">
+                                </a>
+                            </div>
+                            <div class="m-login__title">
+                                <h3>
+                                    JOIN OUR GREAT COMMUNITY
+                                </h3>
+                            </div>
+                            <div class="m-login__desc">
+                                Get Ideas, Meet Entrepreneurs && Invest Money
+                            </div>
+                            <div class="m-login__form-action">
+                                <button type="button" id="m_login_signup" class="btn btn-outline-focus m-btn--pill">
+                                    Create Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-login__border">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-login__wrapper-2 m-portlet-full-height">
+                <div class="m-login__contanier">
+                    <div class="m-login__signin">
+                        <div class="m-login__head">
+                            <h3 class="m-login__title">
+                                Login To Your Account
+                            </h3>
+                        </div>
+                        @if (ViewBag.error!=null)
+                        {
+                            <div class="m-alert m-alert--outline alert alert-dismissible">
+                                <p style="color:red; border:1px solid black; padding:5px;"> @ViewBag.error</p>
+                            </div>
+                        }
+                            <form class="m-login__form m-form">
+                                <div class="form-group m-form__group">
+                                    <input class="form-control m-input" id="email" type="text" placeholder="Email" name="email" autocomplete="on">
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <input class="form-control m-input m-login__form-input--last" id="passward" type="Password" placeholder="Password" name="password">
+                                </div>
+                                <div class="m-login__form-action">
+                                    <button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+                                        Sign In
+                                    </button>
+                                </div>
+                            </form>
+                    </div>
+                    <div class="m-login__signup">
+                        <div class="m-login__head">
+                            <h3 class="m-login__title">
+                                Sign Up
+                            </h3>
+                            <div class="m-login__desc">
+                                Enter your details to create your account:
+                            </div>
+                        </div>
+                        <form class="m-login__form m-form" action="">
+                            <div class="form-group m-form__group">
+                                <input class="form-control m-input" type="text" placeholder="Fullname" name="name">
+                            </div>
+                            <div class="form-group m-form__group">
+                                <input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+                            </div>
+                            <div class="form-group m-form__group">
+                                <input class="form-control m-input" id="password" type="password" placeholder="Password" name="password">
+                            </div>
+                            <div class="form-group m-form__group">
+                                <input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword">
+                            </div>
+                            <div class="m-login__form-sub">
+                                <label class="m-checkbox m-checkbox--focus">
+                                    <input type="checkbox" name="agree">
+                                    I Agree the
+                                    <a href="#" class="m-link m-link--focus">
+                                        terms and conditions
+                                    </a>
+                                    .
+                                    <span></span>
+                                </label>
+                                <span class="m-form__help"></span>
+                            </div>
+                            <div class="m-login__form-action">
+                                <button id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+                                    Sign Up
+                                </button>
+                                <button id="m_login_signup_cancel" class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom">
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="m-login__forget-password">
+                        <div class="m-login__head">
+                            <h3 class="m-login__title">
+                                Forgotten Password ?
+                            </h3>
+                            <div class="m-login__desc">
+                                Enter your email to reset your password:
+                            </div>
+                        </div>
+                        <form class="m-login__form m-form" action="">
+                            <div class="form-group m-form__group">
+                                <input class="form-control m-input" type="text" placeholder="Email" name="email" id="m_email" autocomplete="off">
+                            </div>
+                            <div class="m-login__form-action">
+                                <button id="m_login_forget_password_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+                                    Request
+                                </button>
+                                <button id="m_login_forget_password_cancel" class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom ">
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end:: Page -->
+    <!--begin::Base Scripts -->
+    <script src="~/Content/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+    <script src="~/Content/assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+    <!--end::Base Scripts -->
+    <!--begin::Page Snippets -->
+    <script type="text/javascript">
+        var SnippetLogin = function () {
+    var e = $("#m_login"),
+        i = function (e, i, a) {
+            var t = $('<div class="m-alert m-alert--outline alert alert-' + i + ' alert-dismissible" role="alert">\t\t\t<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>\t\t\t<span></span>\t\t</div>');
+            e.find(".alert").remove(), t.prependTo(e), t.animateClass("fadeIn animated"), t.find("span").html(a);
+        },
+        a = function () {
+            e.removeClass("m-login--forget-password"), e.removeClass("m-login--signin"), e.addClass("m-login--signup"), e.find(".m-login__signup").animateClass("flipInX animated");
+        },
+        t = function () {
+            e.removeClass("m-login--forget-password"), e.removeClass("m-login--signup"), e.addClass("m-login--signin"), e.find(".m-login__signin").animateClass("flipInX animated");
+        },
+        r = function () {
+            e.removeClass("m-login--signin"), e.removeClass("m-login--signup"), e.addClass("m-login--forget-password"), e.find(".m-login__forget-password").animateClass("flipInX animated");
+        },
+        n = function () {
+            $("#m_login_forget_password").click(function (e) {
+                e.preventDefault(), r();
+            }), $("#m_login_forget_password_cancel").click(function (e) {
+                e.preventDefault(), t();
+            }), $("#m_login_signup").click(function (e) {
+                e.preventDefault(), a();
+            }), $("#m_login_signup_cancel").click(function (e) {
+                e.preventDefault(), t();
+            });
+        },
+        l = function () {
+            $("#m_login_signin_submit").click(function (e) {
+                e.preventDefault();
+                var em = $("#email").val();
+                var pwd = $("#passward").val();
+                var a = $(this),
+                    t = $(this).closest("form");
+                t.validate({
+                    rules: {
+                        email: {
+                            required: !0,
+                            email: !0
+                        },
+                        password: {
+                            required: !0
+                        }
+                    }
+
+                }), t.valid() && (a.addClass("m-loader m-loader--right m-loader--light").attr("disabled", !0), t.ajaxSubmit({
+                    type: "POST",
+                    url: '@Url.Action("postLogin","Auth")',
+                    data: { "email": em, "password": pwd },
+                    dataType: "json",
+                    success: function (msg) {
+                        //alert(msg);
+                        if (msg === 1) {
+                            window.location.replace("http://localhost:49569/Home/Index");
+                        }
+                        else if (msg === -1) {
+                            window.location.replace("http://localhost:49569/Home/createProfile");
+                        }
+                        else {
+                            setTimeout(function () {
+                                a.removeClass("m-loader m-loader--right m-loader--light").attr("disabled", !1), i(t, "danger", "Incorrect username or password. Please try again.")
+                            }, 2e3);
+                        }
+                    }
+                }));
+            });
+        },
+        s = function () {
+            $("#m_login_signup_submit").click(function (a) {
+                a.preventDefault();
+                var r = $(this),
+                    n = $(this).closest("form");
+                n.validate({
+                    rules: {
+                        name: {
+                            required: !0
+                        },
+                        email: {
+                            required: !0,
+                            email: !0
+                        },
+                        password: {
+                            required: !0
+                        },
+                        rpassword: {
+                            required: !0,
+                            equalTo: "#password"
+                        },
+                        agree: {
+                            required: !0
+                        }
+                    }
+                }), n.valid() && (r.addClass("m-loader m-loader--right m-loader--light").attr("disabled", !0), n.ajaxSubmit({
+                    url: "@Url.Action("postSignUp", "Auth")",
+                    type: "POST",
+                    dataType: "json",
+                    success: function (msg, a, l, s, o) {
+                        if (msg === true) {
+                            window.location.replace("http://localhost:49569/Home/Index");
+                        }
+                        else if (msg === "emailExist") {
+                            setTimeout(function () {
+                                r.removeClass("m-loader m-loader--right m-loader--light").attr("disabled", !1), n.validate().resetForm(), t();
+                                var a = e.find(".m-login__signin form");
+                                a.clearForm(), a.validate().resetForm(), i(a, "danger", "Email already exist, try another one.")
+                            }, 2e3);
+                        }
+                        else {
+
+                            setTimeout(function () {
+                                r.removeClass("m-loader m-loader--right m-loader--light").attr("disabled", !1), n.validate().resetForm(), t();
+                                var a = e.find(".m-login__signin form");
+                                a.clearForm(), a.validate().resetForm(), i(a, "danger", "Please fill all fields carefully.")
+                            }, 2e3);
+                        }
+                    }
+                }));
+            });
+        },
+        o = function () {
+            $("#m_login_forget_password_submit").click(function (a) {
+                a.preventDefault();
+                var r = $(this),
+                    n = $(this).closest("form");
+                n.validate({
+                    rules: {
+                        email: {
+                            required: !0,
+                            email: !0
+                        }
+                    }
+                }), n.valid() && (r.addClass("m-loader m-loader--right m-loader--light").attr("disabled", !0), n.ajaxSubmit({
+                    url: "",
+                    success: function (a, l, s, o) {
+                        setTimeout(function () {
+                            r.removeClass("m-loader m-loader--right m-loader--light").attr("disabled", !1), n.clearForm(), n.validate().resetForm(), t();
+                            var a = e.find(".m-login__signin form");
+                            a.clearForm(), a.validate().resetForm(), i(a, "success", "Cool! Password recovery instruction has been sent to your email.")
+                        }, 2e3);
+                    }
+                }));
+            });
+        };
+    return {
+        init: function () {
+            n(), l(), s(), o();
+        }
+    };
+}();
+jQuery(document).ready(function () {
+    SnippetLogin.init();
+});
+    </script>
+    <!--end::Page Snippets -->
+</body>
+<!-- end::Body -->
+</html>
+

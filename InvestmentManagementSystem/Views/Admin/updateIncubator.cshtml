@@ -1,0 +1,170 @@
+﻿@model InvestmentManagementSystem.Models.User
+@{
+    ViewBag.Title = "updateIncubator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <!--begin::Portlet-->
+                <div class="m-portlet m-portlet--tab">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <span class="m-portlet__head-icon m--hide">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="m-portlet__head-text">
+                                    Create Incubator/Company Account
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--begin::Form-->
+                    <form class="m-form m-form--fit m-form--label-align-right" id="myForm" action="@Url.Action("postUpdateIncubator","Admin")" method="post" enctype="multipart/form-data">
+                        <div class="m-portlet__body">
+                            <div class="form-group m-form__group">
+                                <div class="text-center" style="width:200px; height:200px;">
+                                    @if (Model.path != null)
+                                    {
+                                        <img src="@Url.Content(Model.path)" class="avatar img-circle img-thumbnail" alt="avatar">
+
+                                    }
+                                    else
+                                    {
+                                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+
+                                    }
+                                    <h6>Upload a different photo...</h6>
+                                    <input type="file" name="path" accept="image/*" class="text-center center-block file-upload" id="imgInp" value="@Model.path">
+
+                                </div>
+                            </div>
+                            <input type="hidden" name="userId" value="@Model.userId" />
+                            <input type="hidden" name="roleId" value="@Model.roleId" />
+                            <br />
+                            <br />
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Incubator/Company Name
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" name="name" value="@Model.name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Email
+                                </label>
+                                <input type="email" class="form-control m-input m-input--square" name="email" value="@Model.email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Phone
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" name="phone" value="@Model.phone" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter phone number" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Location
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" name="address" value="@Model.address" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter address" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    City
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" name="city" value="@Model.city" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter city" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Country
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" name="country" value="@Model.country" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter country" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Password
+                                </label>
+                                <input type="password" class="form-control m-input m-input--square" name="password" value="@Model.password" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password" required>
+
+                            </div>
+                            <input type="hidden" name="roleId" value="3" />
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
+                                <button type="submit" class="btn btn-metal">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Portlet-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('#myForm').validate({ // initialize the plugin
+            rules: {
+                name: {
+                    required: !0
+                },
+                email: {
+                    required: !0,
+                    email: !0
+                },
+                address: {
+                    required: !0,
+                },
+                city: {
+                    required: !0
+                },
+                path: {
+                    required: !0,
+                },
+                country: {
+                    required: !0
+                },
+                phone: {
+                    required: !0
+                },
+                roleId: {
+                    required: !0
+                }
+            }
+        });
+
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.avatar').attr('src', '');
+                $('.avatar').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
+</script>
+

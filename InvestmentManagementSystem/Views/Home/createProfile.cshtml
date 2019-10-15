@@ -1,0 +1,223 @@
+﻿@model InvestmentManagementSystem.Models.User
+@{
+    ViewBag.Title = "createProfile";
+    Layout = null;
+}
+<html>
+
+<head>
+    <title>Complete Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-sm-10"><h1>@Session["username"]</h1></div>
+            <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class=" img-responsive" src="~/Content/assets/app/media/img/logos/logo.png"></a></div>
+        </div>
+        <form class="form" action="@Url.Action("postProfile","Home")" method="post" id="registrationForm" enctype="multipart/form-data">
+
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <!--left col-->
+                    <input type="hidden" value="@Model.userId" name="userId"/>
+                    <input type="hidden" value="@Model.password" name="password"/>
+                    <div class="text-center">
+                        @if (Model.path == null)
+                        {
+                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+
+                        }
+                        else
+                        {
+                            <img src="@Url.Content(Model.path)" class="avatar img-circle img-thumbnail" alt="avatar">
+
+                        }
+                        <h6>Upload a different photo...</h6>
+                        @if (Model.path != null)
+                        {
+                            <input type="file" name="path" accept=".png,.jpg,.jpeg" class="text-center center-block file-upload" value="@Model.path" id="imgInp">
+
+                        }
+                        else
+                        {
+                            <input type="file" name="path" accept=".png,.jpg,.jpeg" class="text-center center-block file-upload" id="imgInp">
+
+                        }
+                    </div></hr>
+
+                    @*<div class="panel panel-default">
+                            <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+                            <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+                        </div>
+
+
+                        <ul class="list-group">
+                            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+                            <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+                        </ul>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Social Media</div>
+                            <div class="panel-body">
+                                <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+                            </div>
+                        </div>*@
+
+                </div><!--/col-3-->
+                <div class="col-sm-9">
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="first_name"><h4>User name</h4></label>
+                            <input type="text" class="form-control" name="name" id="first_name" placeholder="Username" value="@Model.name" title="enter your name if any.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="email"><h4>Email</h4></label>
+                            <input type="email" class="form-control" name="email" id="email" value="@Model.email" placeholder="you@email.com" title="enter your email.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="location"><h4>Location</h4></label>
+                            <input type="text" class="form-control" name="address" id="location" placeholder="somewhere" title="enter a location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="city"><h4>City</h4></label>
+                            <input type="text" class="form-control" name="city" id="city" placeholder="enter your city" title="enter your city.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="country"><h4>Country</h4></label>
+                            <input type="text" class="form-control" name="country" id="country" placeholder="enter your country" title="enter your country.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="phone"><h4>Phone</h4></label>
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="mobile"><h4>Gender</h4></label><br />
+                            <label class="form-control-label"><input type="radio" name="gender" value="Male" checked /> Male</label>
+                            <label class="form-control-label"><input type="radio" name="gender" value="Female" /> Female</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="phone"><h4>Role</h4></label>
+                            <select class="form-control" name="roleId">
+                                <option value="" disabled selected>Select role</option>
+                                @if (ViewBag.roles != null)
+                                {
+                                    foreach (var item in ViewBag.roles)
+                                    {
+                                        if (item.roleId != 1)
+                                        {
+                                            <option value="@item.roleId">@item.roleName</option>
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <br>
+                            <button class="btn btn-lg btn-success" id="addProfile" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                            <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                        </div>
+                    </div>
+
+
+                </div><!--/tab-pane-->
+
+
+            </div><!--/tab-pane-->
+        </form>
+    </div><!--/tab-content-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#registrationForm').validate({ // initialize the plugin
+                rules: {
+                    name: {
+                        required: !0
+                    },
+                    email: {
+                        required: !0,
+                        email: !0
+                    },
+                    address: {
+                        required: !0,
+                    },
+                    city: {
+                        required: !0
+                    },
+                    path: {
+                        required: !0,
+                    },
+                    country: {
+                        required: !0
+                    },
+                    phone: {
+                        required: !0
+                    },
+                    roleId: {
+                        required: !0
+                    }
+                }
+            });
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.avatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    </script>
+</body>
+</html>
