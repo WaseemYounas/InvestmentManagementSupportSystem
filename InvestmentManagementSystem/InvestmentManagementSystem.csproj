@@ -129,53 +129,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909160733244_initial.cs" />
-    <Compile Include="Migrations\201909160733244_initial.Designer.cs">
-      <DependentUpon>201909160733244_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910150649069_initial.cs" />
+    <Compile Include="Migrations\201910150649069_initial.Designer.cs">
+      <DependentUpon>201910150649069_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909250605116_updateUser.cs" />
-    <Compile Include="Migrations\201909250605116_updateUser.Designer.cs">
-      <DependentUpon>201909250605116_updateUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909251131111_updateRole.cs" />
-    <Compile Include="Migrations\201909251131111_updateRole.Designer.cs">
-      <DependentUpon>201909251131111_updateRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909251144199_userCCreeateDate.cs" />
-    <Compile Include="Migrations\201909251144199_userCCreeateDate.Designer.cs">
-      <DependentUpon>201909251144199_userCCreeateDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909251151096_Idea.cs" />
-    <Compile Include="Migrations\201909251151096_Idea.Designer.cs">
-      <DependentUpon>201909251151096_Idea.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909261208083_IdeaChnages.cs" />
-    <Compile Include="Migrations\201909261208083_IdeaChnages.Designer.cs">
-      <DependentUpon>201909261208083_IdeaChnages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910101120404_abc.cs" />
-    <Compile Include="Migrations\201910101120404_abc.Designer.cs">
-      <DependentUpon>201910101120404_abc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910101123063_user_attr.cs" />
-    <Compile Include="Migrations\201910101123063_user_attr.Designer.cs">
-      <DependentUpon>201910101123063_user_attr.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910101225377_user_imagePath.cs" />
-    <Compile Include="Migrations\201910101225377_user_imagePath.Designer.cs">
-      <DependentUpon>201910101225377_user_imagePath.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910121505131_Ideatable.cs" />
-    <Compile Include="Migrations\201910121505131_Ideatable.Designer.cs">
-      <DependentUpon>201910121505131_Ideatable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910121510134_inbatorId.cs" />
-    <Compile Include="Migrations\201910121510134_inbatorId.Designer.cs">
-      <DependentUpon>201910121510134_inbatorId.cs</DependentUpon>
+    <Compile Include="Migrations\201910150943322_isActiveUser.cs" />
+    <Compile Include="Migrations\201910150943322_isActiveUser.Designer.cs">
+      <DependentUpon>201910150943322_isActiveUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Idea.cs" />
+    <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -487,41 +453,8 @@
     <Content Include="Views\Idea\updateIdea.cshtml" />
     <Content Include="Views\Home\updatUserProfile.cshtml" />
     <Content Include="Views\Idea\checkDetails.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909160733244_initial.resx">
-      <DependentUpon>201909160733244_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909250605116_updateUser.resx">
-      <DependentUpon>201909250605116_updateUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909251131111_updateRole.resx">
-      <DependentUpon>201909251131111_updateRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909251144199_userCCreeateDate.resx">
-      <DependentUpon>201909251144199_userCCreeateDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909251151096_Idea.resx">
-      <DependentUpon>201909251151096_Idea.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909261208083_IdeaChnages.resx">
-      <DependentUpon>201909261208083_IdeaChnages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910101120404_abc.resx">
-      <DependentUpon>201910101120404_abc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910101123063_user_attr.resx">
-      <DependentUpon>201910101123063_user_attr.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910101225377_user_imagePath.resx">
-      <DependentUpon>201910101225377_user_imagePath.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910121505131_Ideatable.resx">
-      <DependentUpon>201910121505131_Ideatable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910121510134_inbatorId.resx">
-      <DependentUpon>201910121510134_inbatorId.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\Admin\ListOfEntrepreneurs.cshtml" />
+    <Content Include="Views\Admin\ListOfInvestors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -534,6 +467,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ProfilePictures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910150649069_initial.resx">
+      <DependentUpon>201910150649069_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910150943322_isActiveUser.resx">
+      <DependentUpon>201910150943322_isActiveUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

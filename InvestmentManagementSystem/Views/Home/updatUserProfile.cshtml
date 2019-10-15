@@ -30,15 +30,16 @@
                                     @if (Model.path != null)
                                     {
                                         <img src="@Url.Content(Model.path)" class="avatar img-circle img-thumbnail" alt="avatar">
-
+                                        <h6>Upload a different photo...</h6>
+                                        <input type="file" name="path" accept="image/*" class="text-center center-block file-upload" id="imgInp" value="@Model.path">
                                     }
                                     else
                                     {
                                         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-
+                                        <h6>Upload a different photo...</h6>
+                                        <input type="file" name="path" accept="image/*" class="text-center center-block file-upload" id="imgInp" value="">
                                     }
-                                    <h6>Upload a different photo...</h6>
-                                    <input type="file" name="path" accept="image/*" class="text-center center-block file-upload" id="imgInp" value="@Model.path">
+
 
                                 </div>
                             </div>

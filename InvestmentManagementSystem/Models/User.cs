@@ -11,6 +11,7 @@ namespace InvestmentManagementSystem.Models
         [Key]
         public int userId { get; set; }
         public int firstLogin { get; set; }
+        public int isActive { get; set; }
         public string name { get; set; }
         public string email { get; set; }
         public string password { get; set; }

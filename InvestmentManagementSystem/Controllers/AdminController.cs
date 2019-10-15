@@ -50,7 +50,7 @@ namespace InvestmentManagementSystem.Controllers
             {
                 return RedirectToAction("AddIncubator", "Admin",new { msg="There is an error while creating incubator."});
             }
-            return RedirectToAction("ListOfIncubator", "Home");
+            return RedirectToAction("ListOfIncubator", "Admin");
         }
 
         public ActionResult ListOfIncubator()
@@ -60,6 +60,24 @@ namespace InvestmentManagementSystem.Controllers
                 return RedirectToAction("Login", "Auth");
             }
             List<User> list = new UserBL().getUserList().Where(x=>x.roleId==3).ToList();
+            return View(list);
+        }
+        public ActionResult ListOfEntrepreneurs()
+        {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+            List<User> list = new UserBL().getUserList().Where(x => x.roleId == 2).ToList();
+            return View(list);
+        }
+        public ActionResult ListOfInvestors()
+        {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+            List<User> list = new UserBL().getUserList().Where(x => x.roleId == 4).ToList();
             return View(list);
         }
         public ActionResult updateIncubator(int Id)
@@ -97,17 +115,59 @@ namespace InvestmentManagementSystem.Controllers
             bool temp = new UserBL().UpdateUser(obj);
             return RedirectToAction("ListOfIncubator", "Admin");
         }
-        public ActionResult deleteIncubator()
+        public ActionResult deleteIncubator(int Id,string role="")
         {
             if (Session["username"] == null)
             {
                 return RedirectToAction("Login", "Auth");
             }
-            int id = Convert.ToInt32(Session["userId"]);
-            User obj = new UserBL().getUserById(id);
+            //int id = Convert.ToInt32(Session["userId"]);
+            User obj = new UserBL().getUserById(Id);
             bool temp = new UserBL().DeleteUser(obj);
-            return RedirectToAction("ListOfIncubator", "Admin");
-
+            if (role=="incubator")
+            {
+                return RedirectToAction("ListOfIncubator", "Admin");
+            }
+            else if (role=="entrepreneur")
+            {
+                return RedirectToAction("ListOfEntrepreneurs", "Admin");
+            }
+            return RedirectToAction("ListOfInvestors", "Admin");
+        }
+        public ActionResult blockUser(int Id, string role = "")
+        {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+            //int id = Convert.ToInt32(Session["userId"]);
+            User obj = new UserBL().getUserById(Id);
+            User _user = new User() {
+                userId=obj.userId,
+                email=obj.email,
+                address=obj.address,
+                city=obj.city,
+                country=obj.country,
+                isActive=-1,
+                createdAt=obj.createdAt,
+                firstLogin=obj.firstLogin,
+                gender=obj.gender,
+                name=obj.name,
+                password=obj.password,
+                path=obj.path,
+                phone=obj.phone,
+                roleId=obj.roleId
+            };
+            bool temp = new UserBL().UpdateUser(_user);
+            if (role == "incubator")
+            {
+                return RedirectToAction("ListOfIncubator", "Admin");
+            }
+            else if (role == "entrepreneur")
+            {
+                return RedirectToAction("ListOfEntrepreneurs", "Admin");
+            }
+            return RedirectToAction("ListOfInvestors", "Admin");
         }
         #endregion
     }

@@ -1,7 +1,9 @@
 ﻿@model List<InvestmentManagementSystem.Models.User>
 @{
-    ViewBag.Title = "ListOfIncubator";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "ListOfEntrepreneurs";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
@@ -13,7 +15,7 @@
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
                                 <h3 class="m-portlet__head-text">
-                                   Incubators
+                                    Entrepreneur
                                     <small>
                                         manage records
                                     </small>
@@ -40,14 +42,14 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                                    <a href="@Url.Action("addIncubator","Admin")" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                                    @*<a href="@Url.Action("addIncubator","Admin")" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                                         <span>
                                             <i class="la la-cart-plus"></i>
                                             <span>
                                                 Create new Incubator
                                             </span>
                                         </span>
-                                    </a>
+                                    </a>*@
                                     <div class="m-separator m-separator--dashed d-xl-none"></div>
                                 </div>
                             </div>
@@ -80,7 +82,8 @@
                                     </th>
                                     <th title="Field #8">
                                         Created at
-                                    </th><th title="Field #8">
+                                    </th>
+                                    <th title="Field #8">
                                         Action
                                     </th>
                                 </tr>
@@ -114,7 +117,7 @@
                                             @item.createdAt
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("updateIncubator","Admin",new { Id=item.userId,role="incubator"})" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a> | <a href="@Url.Action("blockUser","Admin",new { Id=item.userId,role="incubator"})" class="btn btn-warning btn-sm"><i class="fa fa-lock"></i></a> | <a href="@Url.Action("deleteIncubator","Admin",new { Id=item.userId,role="incubator"})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="@Url.Action("blockUser","Admin",new { Id=item.userId,role="entrepreneur"})" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a> | <a href="@Url.Action("deleteIncubator","Admin",new { Id=item.userId,role="entrepreneur"})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 }

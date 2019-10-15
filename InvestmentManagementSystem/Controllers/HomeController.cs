@@ -55,6 +55,9 @@ namespace InvestmentManagementSystem.Controllers
             obj.createdAt = DateTime.Now;
             obj.path = filepath;
             obj.firstLogin = 1;
+            Session["username"] = obj.name;
+            Session["userId"] = obj.userId;
+            Session["roleId"] = obj.roleId;
             bool temp = new UserBL().UpdateUser(obj);
             return RedirectToAction("Index","Home");
         }

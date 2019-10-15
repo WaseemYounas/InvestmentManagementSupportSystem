@@ -12,7 +12,7 @@ namespace InvestmentManagementSystem.BL
         #region User
         public List<User> getUserList()
         {
-            return new UserDAL().getUsersList();
+            return new UserDAL().getUsersList().Where(x=>x.isActive!=-1).ToList();
         }
 
         public User getUserById(int _id)

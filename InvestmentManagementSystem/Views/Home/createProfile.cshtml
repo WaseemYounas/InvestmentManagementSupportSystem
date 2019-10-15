@@ -142,7 +142,7 @@
                                 {
                                     foreach (var item in ViewBag.roles)
                                     {
-                                        if (item.roleId != 1)
+                                        if (item.roleId != 1 || item.roleId != 3)
                                         {
                                             <option value="@item.roleId">@item.roleName</option>
                                         }
