@@ -15,5 +15,7 @@ namespace InvestmentManagementSystem.Models
         public virtual Idea Idea { get; set; }
         public DateTime createdAt { get; set; }
         public int senderId { get; set; }
+        public int incubatorId { get; set; }
+
     }
 }

@@ -22,7 +22,7 @@ namespace InvestmentManagementSystem.Models
         public string country { get; set; }
         public string gender { get; set; }
         public DateTime createdAt { get; set; }
-        public int roleId { get; set; }
+        public int? roleId { get; set; }
         public virtual Role Role { get; set; }
         public ICollection<Idea> Ideas { get; set; }
     }

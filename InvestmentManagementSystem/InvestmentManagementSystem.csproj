@@ -125,17 +125,22 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdeaController.cs" />
+    <Compile Include="Controllers\IncubatorController.cs" />
     <Compile Include="DAL\UserDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910150649069_initial.cs" />
-    <Compile Include="Migrations\201910150649069_initial.Designer.cs">
-      <DependentUpon>201910150649069_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910200702154_initial.cs" />
+    <Compile Include="Migrations\201910200702154_initial.Designer.cs">
+      <DependentUpon>201910200702154_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910150943322_isActiveUser.cs" />
-    <Compile Include="Migrations\201910150943322_isActiveUser.Designer.cs">
-      <DependentUpon>201910150943322_isActiveUser.cs</DependentUpon>
+    <Compile Include="Migrations\201910200807564_initial1.cs" />
+    <Compile Include="Migrations\201910200807564_initial1.Designer.cs">
+      <DependentUpon>201910200807564_initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910202214409_initial2.cs" />
+    <Compile Include="Migrations\201910202214409_initial2.Designer.cs">
+      <DependentUpon>201910202214409_initial2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -467,13 +472,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ProfilePictures\" />
+    <Folder Include="Views\Incubator\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910150649069_initial.resx">
-      <DependentUpon>201910150649069_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910200702154_initial.resx">
+      <DependentUpon>201910200702154_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910150943322_isActiveUser.resx">
-      <DependentUpon>201910150943322_isActiveUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910200807564_initial1.resx">
+      <DependentUpon>201910200807564_initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910202214409_initial2.resx">
+      <DependentUpon>201910202214409_initial2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -122,6 +122,7 @@ namespace InvestmentManagementSystem.Controllers
                 return Json("emailExist");
             }
             obj.createdAt = DateTime.Now;
+            obj.roleId = null;
             bool temp = new UserBL().AddUser(obj);
             if (temp)
             {

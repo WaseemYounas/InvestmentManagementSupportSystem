@@ -176,5 +176,117 @@ namespace InvestmentManagementSystem.DAL
             return true;
         }
         #endregion
+
+        #region Request
+        public List<Request> getRequestsList()
+        {
+            List<Request> Requests;
+            db = new DataContext();
+            //using (db = new timecardEntities())
+            //{
+            Requests = db.Request.ToList();
+            //}
+
+            return Requests;
+        }
+
+        public Request getRequestById(int _Id)
+        {
+            Request Request;
+            db = new DataContext();
+            //using (db = new timecardEntities())
+            //{
+            Request = db.Request.FirstOrDefault(x => x.reqId == _Id);
+            //}
+
+            return Request;
+        }
+
+        public bool AddRequest(Request _Request)
+        {
+            using (db = new DataContext())
+            {
+                db.Request.Add(_Request);
+                db.SaveChanges();
+            }
+            return true;
+        }
+
+        public bool UpdateRequest(Request _Request)
+        {
+            using (db = new DataContext())
+            {
+                db.Entry(_Request).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            return true;
+        }
+        public bool DeleteRequest(Request obj)
+        {
+            using (db = new DataContext())
+            {
+                db.Request.Remove(obj);
+                db.SaveChanges();
+
+            }
+            return true;
+        }
+        #endregion
+
+        #region Appointment
+        public List<Appointment> getAppointmentsList()
+        {
+            List<Appointment> Appointments;
+            db = new DataContext();
+            //using (db = new timecardEntities())
+            //{
+            Appointments = db.Appointment.ToList();
+            //}
+
+            return Appointments;
+        }
+
+        public Appointment getAppointmentById(int _Id)
+        {
+            Appointment Appointment;
+            db = new DataContext();
+            //using (db = new timecardEntities())
+            //{
+            Appointment = db.Appointment.FirstOrDefault(x => x.appId == _Id);
+            //}
+
+            return Appointment;
+        }
+
+        public bool AddAppointment(Appointment _Appointment)
+        {
+            using (db = new DataContext())
+            {
+                db.Appointment.Add(_Appointment);
+                db.SaveChanges();
+            }
+            return true;
+        }
+
+        public bool UpdateAppointment(Appointment _Appointment)
+        {
+            using (db = new DataContext())
+            {
+                db.Entry(_Appointment).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            return true;
+        }
+        public bool DeleteAppointment(Appointment obj)
+        {
+            using (db = new DataContext())
+            {
+                db.Appointment.Remove(obj);
+                db.SaveChanges();
+
+            }
+            return true;
+        }
+        #endregion
     }
 }

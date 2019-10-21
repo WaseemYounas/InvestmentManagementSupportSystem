@@ -5,14 +5,13 @@
     ViewBag.Title = "checkDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
     User incubator = new UserBL().getUserById(Model.incubatorId);
+    int senderId =Convert.ToInt16(Session["userId"]);
 }
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
     <div class="m-subheader ">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="m-subheader__title ">
-                    
-                </h3>
+                <h3 class="m-subheader__title "></h3>
             </div>
             <div>
                 <span class="m-subheader__daterange">
@@ -151,9 +150,10 @@
                                 </span>
                             </div>
                             <div class="m-widget13__action m--align-right">
-                                <button type="button" class="m-widget__detalis  btn m-btn--pill  btn-accent">
+
+                                <a href="#" class="m-widget__detalis  btn m-btn--pill  btn-accent" onclick="sendRequest('@Model.ideaId','@senderId')">
                                     Send Request
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -258,5 +258,54 @@
             </div>
         </div>
     </div>
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small class="text-muted">just now</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small class="text-muted">2 seconds ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Heads up, toasts will stack automatically
+        </div>
+    </div>
 </div>
+<script>
+    function sendRequest(ideaId,senderId) {
+        var obj = {
+            'ideaId': ideaId,
+            'senderId': senderId
+        };
+        $.ajax({
+                url: "@Url.Action("sendRequest","Incubator")",
+            type: 'POST',
+            data: { obj },
+            success: function (data) {
+                if (data === true) {
+                    alert("Your request has been sent successfully, you will get notification soon.");
+
+                }
+                else {
+                    alert("There is an error occurred while sending request.");
+                }
+                }
+            });
+    }
+</script>
 

@@ -102,5 +102,67 @@ namespace InvestmentManagementSystem.BL
             return new UserDAL().DeleteIdea(idea);
         }
         #endregion
+
+        #region Request
+        public List<Request> getRequestList()
+        {
+            return new UserDAL().getRequestsList().ToList();
+        }
+
+        public Request getRequestById(int _id)
+        {
+            return new UserDAL().getRequestById(_id);
+        }
+
+        public bool AddRequest(Request _Request)
+        {
+            if (_Request.senderId.ToString() == null || _Request.incubatorId.ToString() == null || _Request.ideaId.ToString() == null)
+                return false;
+            return new UserDAL().AddRequest(_Request);
+        }
+
+        public bool UpdateRequest(Request _Request)
+        {
+            //if (_Request.FirstName == null || _Request.LastName == null || _Request.Email == null || _Request.Password == null)
+
+
+            return new UserDAL().UpdateRequest(_Request);
+        }
+        public bool DeleteRequest(Request _Request)
+        {
+            //if (_Request.FirstName == null || _Request.LastName == null || _Request.Email == null || _Request.Password == null)
+
+
+            return new UserDAL().DeleteRequest(_Request);
+        }
+        #endregion
+
+        #region Appointment
+        public List<Appointment> getAppointmentList()
+        {
+            return new UserDAL().getAppointmentsList();
+        }
+
+        public Appointment getAppointmentById(int _id)
+        {
+            return new UserDAL().getAppointmentById(_id);
+        }
+
+        public bool AddAppointment(Appointment _Appointment)
+        {
+            if (_Appointment.senderId.ToString() == null|| _Appointment.ideaId.ToString() == null)
+                return false;
+            return new UserDAL().AddAppointment(_Appointment);
+        }
+
+        public bool UpdateAppointment(Appointment _Appointment)
+        {
+            return new UserDAL().UpdateAppointment(_Appointment);
+        }
+        public bool DeleteAppointment(Appointment _Appointment)
+        {
+            return new UserDAL().DeleteAppointment(_Appointment);
+        }
+        #endregion
     }
 }
