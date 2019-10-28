@@ -11,6 +11,9 @@ namespace InvestmentManagementSystem.Models
         [Key]
         public int appId { get; set; }
         public DateTime appDate { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string country { get; set; }
         public int ideaId { get; set; }
         public virtual Idea Idea { get; set; }
         public DateTime createdAt { get; set; }

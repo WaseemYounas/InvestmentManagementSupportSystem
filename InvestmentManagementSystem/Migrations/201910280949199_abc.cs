@@ -3,16 +3,16 @@ namespace InvestmentManagementSystem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial1 : DbMigration
+    public partial class abc : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Requests", "incubatorId", c => c.Int(nullable: false));
+            AddColumn("dbo.Appointments", "location", c => c.String());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Requests", "incubatorId");
+            DropColumn("dbo.Appointments", "location");
         }
     }
 }

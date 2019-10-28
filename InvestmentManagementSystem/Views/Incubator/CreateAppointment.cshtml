@@ -1,0 +1,150 @@
+﻿@using InvestmentManagementSystem.BL
+@{
+    /**/
+
+    ViewBag.Title = "CreateAppointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    UserBL userbl = new UserBL();
+}
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-content">
+        <div class="row">
+            <div class="col-xl-12">
+                <!--begin::Portlet-->
+                <div class="m-portlet m-portlet--tab">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <span class="m-portlet__head-icon m--hide">
+                                    <i class="la la-gear"></i>
+                                </span>
+                                <h3 class="m-portlet__head-text">
+                                    Create Appointment
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--begin::Form-->
+                    <form class="m-form m-form--fit m-form--label-align-right" id="myForm" action="@Url.Action("postIncubator","Admin")" method="post" enctype="multipart/form-data">
+                        <div class="m-portlet__body">
+                            
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Entrepreneur Name
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" value="@userbl.getIdeaById(ViewBag.ideaId).User.name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" readonly>
+                                
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Investor Name
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" value="@userbl.getUserById(ViewBag.senderId).name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" readonly>
+                                <input type="hidden" name="senderId" value="@ViewBag.senderId"/>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Idea title
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" value="@userbl.getIdeaById(ViewBag.ideaId).title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title" readonly>
+                                <input type="hidden" name="ideaId" value="@ViewBag.ideaId" />
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Location
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" name="address" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter address" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    City
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" name="city" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter city" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Country
+                                </label>
+                                <input type="text" class="form-control m-input m-input--square" name="city" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter country" required>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <label for="exampleInputEmail1">
+                                    Appointment Date
+                                </label>
+                                <input type="date" class="form-control m-input m-input--square" name="appDate" id="exampleInputEmail1"   required>
+
+                            </div>
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
+                                <button type="submit" class="btn btn-metal">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Portlet-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('#myForm').submit(function(){
+            // initialize the plugin
+            t = $(this).closest("form");
+            t.validate({
+                rules: {
+                    senderId: {
+                        required: !0
+                    },
+                    ideaId: {
+                        required: !0,
+                        email: !0
+                    },
+                    address: {
+                        required: !0,
+                    },
+                    city: {
+                        required: !0
+                    },
+                    country: {
+                        required: !0
+                    },
+                    createdAt: {
+                        required: !0
+                    }
+                }
+            }),t.valid(), t.ajaxSubmit({
+                    
+                    type: "POST",
+                    url: '@Url.Action("PostAppointment", "Incubator")',
+                data:  t.serialize(),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (msg) {
+                        alert(msg);
+                        if (msg === 1) {
+                            alert("Appointment has been created successfully.");
+                        }
+                        else if (msg === -1) {
+                            alert("Appointment is already created.");
+                        }
+                    }
+                })
+        });
+
+    });
+</script>
+

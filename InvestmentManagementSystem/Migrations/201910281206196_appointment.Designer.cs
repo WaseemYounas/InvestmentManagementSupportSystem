@@ -7,13 +7,13 @@ namespace InvestmentManagementSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class initial1 : IMigrationMetadata
+    public sealed partial class appointment : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(appointment));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910200807564_initial1"; }
+            get { return "201910281206196_appointment"; }
         }
         
         string IMigrationMetadata.Source

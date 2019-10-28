@@ -35,7 +35,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -130,17 +130,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910200702154_initial.cs" />
-    <Compile Include="Migrations\201910200702154_initial.Designer.cs">
-      <DependentUpon>201910200702154_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910280700163_initial.cs" />
+    <Compile Include="Migrations\201910280700163_initial.Designer.cs">
+      <DependentUpon>201910280700163_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910200807564_initial1.cs" />
-    <Compile Include="Migrations\201910200807564_initial1.Designer.cs">
-      <DependentUpon>201910200807564_initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201910280949199_abc.cs" />
+    <Compile Include="Migrations\201910280949199_abc.Designer.cs">
+      <DependentUpon>201910280949199_abc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910202214409_initial2.cs" />
-    <Compile Include="Migrations\201910202214409_initial2.Designer.cs">
-      <DependentUpon>201910202214409_initial2.cs</DependentUpon>
+    <Compile Include="Migrations\201910281206196_appointment.cs" />
+    <Compile Include="Migrations\201910281206196_appointment.Designer.cs">
+      <DependentUpon>201910281206196_appointment.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -460,6 +460,10 @@
     <Content Include="Views\Idea\checkDetails.cshtml" />
     <Content Include="Views\Admin\ListOfEntrepreneurs.cshtml" />
     <Content Include="Views\Admin\ListOfInvestors.cshtml" />
+    <Content Include="Views\Incubator\listOfRequests.cshtml" />
+    <Content Include="Views\Incubator\Requestdetails.cshtml" />
+    <Content Include="Views\Incubator\CreateAppointment.cshtml" />
+    <Content Include="Views\Incubator\listOfAppointments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -472,17 +476,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ProfilePictures\" />
-    <Folder Include="Views\Incubator\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910200702154_initial.resx">
-      <DependentUpon>201910200702154_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910280700163_initial.resx">
+      <DependentUpon>201910280700163_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910200807564_initial1.resx">
-      <DependentUpon>201910200807564_initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910280949199_abc.resx">
+      <DependentUpon>201910280949199_abc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910202214409_initial2.resx">
-      <DependentUpon>201910202214409_initial2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910281206196_appointment.resx">
+      <DependentUpon>201910281206196_appointment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
