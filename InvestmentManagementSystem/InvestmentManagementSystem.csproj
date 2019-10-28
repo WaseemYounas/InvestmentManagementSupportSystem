@@ -130,17 +130,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910280700163_initial.cs" />
-    <Compile Include="Migrations\201910280700163_initial.Designer.cs">
-      <DependentUpon>201910280700163_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910280949199_abc.cs" />
-    <Compile Include="Migrations\201910280949199_abc.Designer.cs">
-      <DependentUpon>201910280949199_abc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910281206196_appointment.cs" />
-    <Compile Include="Migrations\201910281206196_appointment.Designer.cs">
-      <DependentUpon>201910281206196_appointment.cs</DependentUpon>
+    <Compile Include="Migrations\201910281626396_initial.cs" />
+    <Compile Include="Migrations\201910281626396_initial.Designer.cs">
+      <DependentUpon>201910281626396_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -478,14 +470,8 @@
     <Folder Include="ProfilePictures\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910280700163_initial.resx">
-      <DependentUpon>201910280700163_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910280949199_abc.resx">
-      <DependentUpon>201910280949199_abc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910281206196_appointment.resx">
-      <DependentUpon>201910281206196_appointment.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910281626396_initial.resx">
+      <DependentUpon>201910281626396_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
