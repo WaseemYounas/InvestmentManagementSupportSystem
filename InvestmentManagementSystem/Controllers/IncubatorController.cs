@@ -16,23 +16,27 @@ namespace InvestmentManagementSystem.Controllers
             obj.createdAt = DateTime.Now;
             Idea _idea = new UserBL().getIdeaById(obj.ideaId);
             obj.incubatorId = _idea.incubatorId;
-            bool temp = new UserBL().AddRequest(obj);
-           
+            Request exist = new UserBL().getRequestList().Where(x => x.ideaId == obj.ideaId && x.incubatorId == obj.incubatorId && x.senderId == obj.senderId).FirstOrDefault();
+            bool temp = false;
+            if (exist == null)
+            {
+                temp = new UserBL().AddRequest(obj);
+            }
             return Json(temp, JsonRequestBehavior.AllowGet);
         }
         public ActionResult listOfRequests()
         {
             int incId = Convert.ToInt16(Session["userId"]);
-            List<Request> list = new UserBL().getRequestList().Where(x=>x.incubatorId==incId).ToList();
+            List<Request> list = new UserBL().getRequestList().Where(x => x.incubatorId == incId).ToList();
             return View(list);
         }
-        public ActionResult Requestdetails(int ideaId,int senderId)
+        public ActionResult Requestdetails(int ideaId, int senderId)
         {
             Idea obj = new UserBL().getIdeaById(ideaId);
             ViewBag.sender = new UserBL().getUserById(senderId);
             return View(obj);
         }
-        public ActionResult CreateAppointment(int ideaId=0,int senderId=0,string msg="")
+        public ActionResult CreateAppointment(int ideaId = 0, int senderId = 0, string msg = "")
         {
             ViewBag.ideaId = ideaId;
             ViewBag.senderId = senderId;
@@ -42,13 +46,13 @@ namespace InvestmentManagementSystem.Controllers
         public int PostAppointment(Appointment apt)
         {
             Appointment obj = new UserBL().getAppointmentList().Where(x => x.ideaId == apt.ideaId && x.senderId == apt.senderId).FirstOrDefault();
-            if (obj==null)
+            if (obj == null)
             {
                 apt.createdAt = DateTime.Now;
-new UserBL().AddAppointment(apt);
+                new UserBL().AddAppointment(apt);
                 return 1;
             }
-            else 
+            else
             {
                 return -1;
             }

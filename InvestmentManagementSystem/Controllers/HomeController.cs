@@ -30,6 +30,7 @@ namespace InvestmentManagementSystem.Controllers
             ViewBag.roles = new UserBL().getRoleList();
             int userId = Convert.ToInt32(Session["userId"]);
             User user = new UserBL().getUserById(userId);
+            //List<EventDTO> event=new List<EventDTO>();
             return View(user);
         }
         [HttpPost]

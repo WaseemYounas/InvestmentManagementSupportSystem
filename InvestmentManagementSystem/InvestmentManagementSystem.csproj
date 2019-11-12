@@ -137,6 +137,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\EventDTO.cs" />
     <Compile Include="Models\Idea.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Role.cs" />
