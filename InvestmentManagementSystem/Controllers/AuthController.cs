@@ -28,6 +28,8 @@ namespace InvestmentManagementSystem.Controllers
                 Session["userId"] = obj.userId;
                 Session["username"] = obj.name;
                 Session["roleId"] = obj.roleId;
+                Session["email"] = obj.email;
+                Session["path"] = obj.path;
                 if (obj.firstLogin == 1)
                 {
                     return Json(1, JsonRequestBehavior.AllowGet);

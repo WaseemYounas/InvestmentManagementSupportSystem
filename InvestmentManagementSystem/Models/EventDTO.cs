@@ -7,10 +7,10 @@ namespace InvestmentManagementSystem.Models
 {
     public class EventDTO
     {
-        string title = "";
-        string description = "";
-        DateTime start = DateTime.Now;
-        string className = "";
+        public string title = "";
+        public string description = "";
+        public string start = DateTime.Now.ToShortDateString();
+        public string className = "m-fc-event--light m-fc-event--solid-warning";
         
     }
 }

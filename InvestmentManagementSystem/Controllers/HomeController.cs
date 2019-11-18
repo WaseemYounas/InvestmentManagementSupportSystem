@@ -18,6 +18,23 @@ namespace InvestmentManagementSystem.Controllers
             {
                 return RedirectToAction("Login", "Auth");
             }
+            List<EventDTO> events=new List<EventDTO>();
+            int userId = Convert.ToInt32(Session["userId"]);
+            List<Appointment> appList = new UserBL().getAppointmentList().Where(x=>x.senderId==userId).ToList();
+            if (appList!=null)
+            {
+                foreach (var item in appList)
+                {
+                    EventDTO obj = new EventDTO() {
+                        title = "Appointment with " + new UserBL().getIdeaById(item.ideaId).User.name,
+                        description = "Your meeting point is " + item.address + " " + item.city + " " + item.country,
+                        start = item.createdAt.ToString("yyyy-MM-dd"),
+                        className = (item.createdAt - DateTime.Now).TotalMinutes > 0 ? "m-fc-event--light m-fc-event--solid-success" : "m-fc-event--light m-fc-event--solid-danger"
+                };
+                    events.Add(obj);
+                }
+            }
+            ViewBag.events=events;
             return View();
         }
 
@@ -30,7 +47,7 @@ namespace InvestmentManagementSystem.Controllers
             ViewBag.roles = new UserBL().getRoleList();
             int userId = Convert.ToInt32(Session["userId"]);
             User user = new UserBL().getUserById(userId);
-            //List<EventDTO> event=new List<EventDTO>();
+            
             return View(user);
         }
         [HttpPost]
@@ -73,6 +90,9 @@ namespace InvestmentManagementSystem.Controllers
             User _user = new UserBL().getUserById(id);
             return View(_user);
         }
-        
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            
+        }
     }
 }

@@ -134,12 +134,14 @@
                     dataType: "json",
                     contentType: "application/json",
                     success: function (msg) {
-                        alert(msg);
                         if (msg === 1) {
                             alert("Appointment has been created successfully.");
                         }
                         else if (msg === -1) {
                             alert("Appointment is already created.");
+                        }
+                        else {
+                            window.open(@Url.Action("CreateAppointment","Incubator"));
                         }
                     }
                 })
