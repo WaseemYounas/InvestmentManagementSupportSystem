@@ -20,7 +20,17 @@ namespace InvestmentManagementSystem.Controllers
             }
             List<EventDTO> events=new List<EventDTO>();
             int userId = Convert.ToInt32(Session["userId"]);
-            List<Appointment> appList = new UserBL().getAppointmentList().Where(x=>x.senderId==userId).ToList();
+            int roleId= Convert.ToInt32(Session["roleId"]);
+            List<Appointment> appList = new List<Appointment>();
+            if (roleId == 2)
+            {
+                appList = new UserBL().getAppointmentList().Where(x => x.Idea.userId == userId).ToList();
+            }
+            else
+            {
+                appList = new UserBL().getAppointmentList().Where(x => x.senderId == userId).ToList();
+
+            }
             if (appList!=null)
             {
                 foreach (var item in appList)
@@ -35,6 +45,12 @@ namespace InvestmentManagementSystem.Controllers
                 }
             }
             ViewBag.events=events;
+            ViewBag.requests = new UserBL().getRequestList().Where(x => x.incubatorId == userId).Count();
+            ViewBag.apps = new UserBL().getAppointmentList().Where(x => x.Idea.incubatorId == userId).Count();
+            ViewBag.ent= new UserBL().getUserList().Where(x => x.roleId==2).Count();
+            ViewBag.inv= new UserBL().getUserList().Where(x => x.roleId==4).Count();
+            ViewBag.inc= new UserBL().getUserList().Where(x => x.roleId==3).Count();
+            ViewBag.ideas= new UserBL().getIdeaList().Count();
             return View();
         }
 
@@ -76,6 +92,8 @@ namespace InvestmentManagementSystem.Controllers
             Session["username"] = obj.name;
             Session["userId"] = obj.userId;
             Session["roleId"] = obj.roleId;
+            Session["email"] = obj.email;
+            Session["path"] = obj.path;
             bool temp = new UserBL().UpdateUser(obj);
             return RedirectToAction("Index","Home");
         }

@@ -68,7 +68,7 @@
                                 <label for="exampleInputEmail1">
                                     Country
                                 </label>
-                                <input type="text" class="form-control m-input m-input--square" name="city" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter country" required>
+                                <input type="text" class="form-control m-input m-input--square" name="country" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter country" required>
 
                             </div>
                             <div class="form-group m-form__group">
@@ -136,12 +136,15 @@
                     success: function (msg) {
                         if (msg === 1) {
                             alert("Appointment has been created successfully.");
+                            window.location.replace("http://localhost:49569/Incubator/listOfAppointments");
                         }
                         else if (msg === -1) {
                             alert("Appointment is already created.");
+                            window.location.replace("http://localhost:49569/Incubator/listOfAppointments");
                         }
                         else {
-                            window.open(@Url.Action("CreateAppointment","Incubator"));
+                            alert("There is an error occured while creating appointment.");
+                            window.location.replace("http://localhost:49569/Incubator/listOfAppointments");
                         }
                     }
                 })

@@ -3,6 +3,8 @@ using InvestmentManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -45,14 +47,34 @@ namespace InvestmentManagementSystem.Controllers
         [HttpPost]
         public int PostAppointment(Appointment apt)
         {
-            Appointment obj = new UserBL().getAppointmentList().Where(x => x.ideaId == apt.ideaId && x.senderId == apt.senderId).FirstOrDefault();
-            if (obj == null)
+            try
             {
-                apt.createdAt = DateTime.Now;
-                new UserBL().AddAppointment(apt);
-                return 1;
+                Appointment obj = new UserBL().getAppointmentList().Where(x => x.ideaId == apt.ideaId && x.senderId == apt.senderId).FirstOrDefault();
+                if (obj == null)
+                {
+                    apt.createdAt = DateTime.Now;
+                    bool temp = new UserBL().AddAppointment(apt);
+                    if (temp)
+                    {
+                        Appointment _apt = new UserBL().getAppointmentById(apt.appId);
+                        User usr = new UserBL().getUserById(_apt.senderId);
+                        User inc = new UserBL().getUserById(_apt.senderId);
+                        string text = "<p><b>Dear " + usr.name + ",<b></p><br><p>Your appointment has been created successfully with " + _apt.Idea.User.name + " and incubator is " + inc.name + ".</p><br><p><b>Venue:</b></p><br><p>Your meeting point is " + _apt.address + " " + _apt.city + " " + _apt.country + " at " + _apt.appDate.ToShortDateString() + ".</p><br><p>Thank you.</p>";
+                        //Sending email to investor
+                        sendEmailAsync(usr.email, inc.email, text);
+                        //Sending email to entrepreneur
+                        text = "<p><b>Dear " + _apt.Idea.User.name + ",<b></p><br><p>Your appointment has been created successfully with " + usr.name + " and incubator is " + inc.name + ".</p><br><p><b>Venue:</b></p><br><p>Your meeting point is " + _apt.address + " " + _apt.city + " " + _apt.country + " at " + _apt.appDate.ToShortDateString() + ".</p><br><p>Thank you.</p>";
+
+                        sendEmailAsync(_apt.Idea.User.email, inc.email, text);
+                    }
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
             }
-            else
+            catch(Exception ex)
             {
                 return -1;
             }
@@ -62,6 +84,30 @@ namespace InvestmentManagementSystem.Controllers
             int incId = Convert.ToInt16(Session["userId"]);
             List<Appointment> list = new UserBL().getAppointmentList().Where(x => x.Idea.incubatorId == incId).ToList();
             return View(list);
+        }
+        public void sendEmailAsync(string to,string from,string text)
+        {
+            var body = text;
+            var message = new MailMessage();
+            message.To.Add(new MailAddress(to));  // replace with valid value 
+            message.From = new MailAddress(from);  // replace with valid value
+            message.Subject = "Appointment Notice";
+            message.Body = string.Format(body);
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "aldrichdeveloper786@gmail.com",  // replace with valid value
+                    Password = "aldrich123"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.Send(message);
+            }
         }
     }
 }
