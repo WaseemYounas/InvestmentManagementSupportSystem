@@ -57,7 +57,8 @@ namespace InvestmentManagementSystem.DAL
         {
             using (db = new DataContext())
             {
-                db.User.Remove(obj);
+                User _user = db.User.Where(x => x.userId == obj.userId).FirstOrDefault();
+                db.User.Remove(_user);
                 db.SaveChanges();
 
             }
@@ -113,7 +114,8 @@ namespace InvestmentManagementSystem.DAL
         {
             using (db = new DataContext())
             {
-                db.Role.Remove(obj);
+                Role _user = db.Role.Where(x => x.roleId == obj.roleId).FirstOrDefault();
+                db.Role.Remove(_user);
                 db.SaveChanges();
 
             }
@@ -169,7 +171,9 @@ namespace InvestmentManagementSystem.DAL
         {
             using (db = new DataContext())
             {
-                db.Idea.Remove(obj);
+                Idea _user = db.Idea.Where(x => x.ideaId == obj.ideaId).FirstOrDefault();
+
+                db.Idea.Remove(_user);
                 db.SaveChanges();
 
             }
@@ -225,7 +229,9 @@ namespace InvestmentManagementSystem.DAL
         {
             using (db = new DataContext())
             {
-                db.Request.Remove(obj);
+                Request _user = db.Request.Where(x => x.reqId == obj.reqId).FirstOrDefault();
+
+                db.Request.Remove(_user);
                 db.SaveChanges();
 
             }
